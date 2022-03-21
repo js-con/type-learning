@@ -8,7 +8,7 @@ interface Todo {
   completed: boolean
 }
 
-type TodoPreview = MyOmit<Todo, 'description' | 'title'>
+type TodoPreview = MyOmit<Todo, 'description' | 'title'> | MyOmit2<Todo, 'description' | 'title'> | MyOmit3<Todo, 'description' | 'title'>
 
 const todo: TodoPreview = {
   completed: false,
@@ -18,7 +18,9 @@ type MyOmit<T, U> = {
   [key in Exclude<keyof T, U>]: T[key]
 }
 
-type MyOmit2<T, U> = {
+type MyOmit2<T, U> = Pick<T, Exclude<keyof T, U>>
+
+type MyOmit3<T, U> = {
   [key in keyof T as key extends U ? never : key]: T[key]
 }
 
