@@ -14,7 +14,7 @@ todo.title = "Hello" // Error: cannot reassign a readonly property
 todo.description = "barFoo" // Error: cannot reassign a readonly property
 todo.completed = true // OK
 
-type MyReadonly2<T, U> = {
+export type MyReadonly2<T, U> = {
   readonly [key in keyof T as key extends U ? key : never]: T[key];
 } & {
   [K in keyof T]: T[K]
