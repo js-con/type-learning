@@ -18,6 +18,10 @@ type MyOmit<T, U> = {
   [key in Exclude<keyof T, U>]: T[key]
 }
 
+type MyOmit2<T, U> = {
+  [key in keyof T as key extends U ? never : key]: T[key]
+}
+
 function MyOmit(obj, keys: any[]){
   const result = {}
 
