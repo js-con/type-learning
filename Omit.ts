@@ -20,6 +20,7 @@ type MyOmit<T, U> = {
 
 type MyOmit2<T, U> = Pick<T, Exclude<keyof T, U>>
 
+//https://www.typescriptlang.org/docs/handbook/2/mapped-types.html#key-remapping-via-as
 type MyOmit3<T, U> = {
   [key in keyof T as key extends U ? never : key]: T[key]
 }
