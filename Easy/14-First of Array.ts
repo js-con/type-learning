@@ -10,6 +10,7 @@ type head2 = First<arr2> | First2<arr2>// expected to be 3
 type head3 = First<arr3> | First2<arr3> // expected to be never
 
 //solution
-type First<T extends unknown[]> = T extends [infer A,...infer _] ? A : never
+export type First<T extends unknown[]> = T extends [infer A,...infer _] ? A : never
 
-type First2<T extends unknown[]> = T["length"] extends 0 ? never : T[0]
+export type First2<T extends unknown[]> = T['length'] extends 0 ? never : T[0]
+Array
